@@ -1,17 +1,46 @@
 <resources>
     <string name="app_name">CameraExample</string>
-    <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <string name="permission_camera_granted">카메라 권한 승인이 완료되었습니다.</string>
     <string name="permission_camera_define">카메라 권한이 승인되지 않았습니다.\n수동으로 권한 체크해주세요.</string>
     <string name="permission_write_external_storage_granted">저장소 권한 승인이 완료되었습니다.</string>
     <string name="permission_write_external_storage_define">파일 저장을 위한 저장소 권한이 필요합니다.</string>
+
+    <string name="dialog_camera_option_iso_title">ISO 설정 (최소 %d ~ 최대 %d)</string>
+    <string name="dialog_camera_option_iso">ISO : %d</string>
+
+    <string name="dialog_camera_option_exposure_title">셔터스피드 (노출) 설정</string>
+    <string name="dialog_camera_option_exposure_1">1</string>
+    <string name="dialog_camera_option_exposure_125">125</string>
+    <string name="dialog_camera_option_exposure_1000">1000</string>
+    <string name="dialog_camera_option_exposure_4000">4000</string>
+    <string name="dialog_camera_option_exposure_8000">8000</string>
+
+    <string name="dialog_camera_option_focus_title">포커스 설정</string>
+    <string name="dialog_camera_option_focus_fixed">Fixed</string>
+    <string name="dialog_camera_option_focus_infinity">Infinity</string>
+    <string name="dialog_camera_option_focus_macro">Macro</string>
+    <string name="dialog_camera_option_focus_auto">Auto</string>
+    <string name="dialog_camera_option_focus_continuous_focus_picture">Continuous Focus Picture</string>
+    <string name="dialog_camera_option_focus_continuous_focus_video">Continuous Focus Video</string>
+    <string name="dialog_camera_option_focus_edof">Edof</string>
+
+    <string name="dialog_camera_option_image_ratio_title">Image Ratio</string>
+    <string name="dialog_camera_option_image_ratio_1_1">1:1</string>
+    <string name="dialog_camera_option_image_ratio_4_3">4:3</string>
+    <string name="dialog_camera_option_image_ratio_16_9">16:9</string>
+
+    <string name="dialog_camera_option_flash_title">플래시 설정(기획서 X)</string>
+    <string name="dialog_camera_option_flash_off">Off</string>
+    <string name="dialog_camera_option_flash_on">On</string>
+    <string name="dialog_camera_option_flash_auto">Auto</string>
+    <string name="dialog_camera_option_flash_auto_red_eye">AutoRedEye</string>
+    <string name="dialog_camera_option_flash_torch">Torch</string>
+
+    <string name="dialog_camera_option_anti_banding_title">Anti Banding 설정(기획서 X)</string>
+    <string name="dialog_camera_option_anti_banding_auto">Auto</string>
+    <string name="dialog_camera_option_anti_banding_hz50">HZ50</string>
+    <string name="dialog_camera_option_anti_banding_hz60">HZ60</string>
+    <string name="dialog_camera_option_anti_banding_none">NONE</string>
+
 </resources>
