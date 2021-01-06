@@ -9,15 +9,12 @@
     <string name="dialog_camera_option_iso_title">ISO 설정 (최소 %d ~ 최대 %d)</string>
     <string name="dialog_camera_option_iso">ISO : %d</string>
 
-    <string name="dialog_camera_option_exposure_title">셔터스피드 (노출) 설정</string>
-    <string name="dialog_camera_option_exposure_1">1</string>
-    <string name="dialog_camera_option_exposure_125">125</string>
-    <string name="dialog_camera_option_exposure_1000">1000</string>
-    <string name="dialog_camera_option_exposure_4000">4000</string>
-    <string name="dialog_camera_option_exposure_8000">8000</string>
+    <string name="dialog_camera_option_exposure_title">셔터스피드 (노출) 설정\n(최소 %d ns ~ 최대 %d ns)</string>
+    <string name="dialog_camera_option_exposure">Shutter speed(Exposure Time) : %d ns</string>
 
     <string name="dialog_camera_option_focus_title">포커스 설정</string>
-    <string name="dialog_camera_option_focus_fixed">Fixed</string>
+    <string name="dialog_camera_option_focus_manual">수동 초점</string>
+    <string name="dialog_camera_option_focus_manual_value">수동 초점 : %d</string>
     <string name="dialog_camera_option_focus_infinity">Infinity</string>
     <string name="dialog_camera_option_focus_macro">Macro</string>
     <string name="dialog_camera_option_focus_auto">Auto</string>

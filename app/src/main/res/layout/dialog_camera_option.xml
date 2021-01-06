@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <import type="com.example.finiview.camera.ui.main.CameraFocusMode" />
 
         <import type="com.example.finiview.camera.ui.main.CameraImageRatioMode" />
@@ -93,93 +95,36 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_option_iso">
 
-            <HorizontalScrollView
-                android:id="@+id/hv_option_exposure"
-                android:layout_width="match_parent"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_option_exposure_title"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:scrollbars="none"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/dialog_camera_option_exposure_title" />
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/sb_option_exposure"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/tv_option_exposure_title" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tv_option_exposure_title"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/dialog_camera_option_exposure_title"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_option_exposure_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
-                        android:onClick="@{() -> viewModel.onClickCameraExposure(1)}"
-                        android:padding="20dp"
-                        android:text="@string/dialog_camera_option_exposure_1"
-                        app:layout_constraintEnd_toStartOf="@id/btn_option_exposure_125"
-                        app:layout_constraintHorizontal_chainStyle="packed"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_option_exposure_title" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_option_exposure_125"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
-                        android:onClick="@{() -> viewModel.onClickCameraExposure(125)}"
-                        android:padding="20dp"
-                        android:text="@string/dialog_camera_option_exposure_125"
-                        app:layout_constraintEnd_toStartOf="@id/btn_option_exposure_1000"
-                        app:layout_constraintStart_toEndOf="@id/btn_option_exposure_1"
-                        app:layout_constraintTop_toBottomOf="@id/tv_option_exposure_title" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_option_exposure_1000"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
-                        android:onClick="@{() -> viewModel.onClickCameraExposure(1000)}"
-                        android:padding="20dp"
-                        android:text="@string/dialog_camera_option_exposure_1000"
-                        app:layout_constraintEnd_toStartOf="@id/btn_option_exposure_4000"
-                        app:layout_constraintStart_toEndOf="@id/btn_option_exposure_125"
-                        app:layout_constraintTop_toBottomOf="@id/tv_option_exposure_title" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_option_exposure_4000"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
-                        android:onClick="@{() -> viewModel.onClickCameraExposure(4000)}"
-                        android:padding="20dp"
-                        android:text="@string/dialog_camera_option_exposure_4000"
-                        app:layout_constraintEnd_toStartOf="@id/btn_option_exposure_8000"
-                        app:layout_constraintStart_toEndOf="@id/btn_option_exposure_1000"
-                        app:layout_constraintTop_toBottomOf="@id/tv_option_exposure_title" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_option_exposure_8000"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
-                        android:onClick="@{() -> viewModel.onClickCameraExposure(8000)}"
-                        android:padding="20dp"
-                        android:text="@string/dialog_camera_option_exposure_8000"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/btn_option_exposure_4000"
-                        app:layout_constraintTop_toBottomOf="@id/tv_option_exposure_title" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </HorizontalScrollView>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_option_exposure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="7dp"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sb_option_exposure"
+                tools:text="@string/dialog_camera_option_exposure" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
         <!-- Exposure START -->
@@ -218,13 +163,13 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_option_focus_fixed"
+                        android:id="@+id/btn_option_focus_manual"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
-                        android:onClick="@{() -> viewModel.onClickCameraFocus(CameraFocusMode.FIXED)}"
+                        android:onClick="@{() -> viewModel.onClickCameraFocus(CameraFocusMode.MANUAL)}"
                         android:padding="20dp"
-                        android:text="@string/dialog_camera_option_focus_fixed"
+                        android:text="@string/dialog_camera_option_focus_manual"
                         app:layout_constraintEnd_toStartOf="@id/btn_option_focus_infinity"
                         app:layout_constraintHorizontal_chainStyle="packed"
                         app:layout_constraintStart_toStartOf="parent"
@@ -239,7 +184,7 @@
                         android:padding="20dp"
                         android:text="@string/dialog_camera_option_focus_infinity"
                         app:layout_constraintEnd_toStartOf="@id/btn_option_focus_macro"
-                        app:layout_constraintStart_toEndOf="@id/btn_option_focus_fixed"
+                        app:layout_constraintStart_toEndOf="@id/btn_option_focus_manual"
                         app:layout_constraintTop_toBottomOf="@id/tv_option_focus_title" />
 
                     <androidx.appcompat.widget.AppCompatButton
@@ -307,6 +252,31 @@
             </HorizontalScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/sb_option_focus_manual"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:padding="10dp"
+            android:visibility="@{viewModel.cameraFocusMode == CameraFocusMode.MANUAL ? View.VISIBLE : View.GONE, default=gone}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_option_focus"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_option_focus_manual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="7dp"
+            android:textSize="13sp"
+            android:visibility="@{viewModel.cameraFocusMode == CameraFocusMode.MANUAL ? View.VISIBLE : View.GONE, default=gone}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sb_option_focus_manual"
+            tools:text="@string/dialog_camera_option_focus_manual_value"
+            tools:visibility="visible" />
         <!-- Focus END -->
 
         <!-- Image Ratio START -->
@@ -317,7 +287,7 @@
             android:layout_marginTop="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_option_focus">
+            app:layout_constraintTop_toBottomOf="@id/tv_option_focus_manual">
 
             <HorizontalScrollView
                 android:id="@+id/hv_option_image_ratio"

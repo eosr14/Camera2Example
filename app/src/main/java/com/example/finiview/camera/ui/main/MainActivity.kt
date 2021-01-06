@@ -35,6 +35,7 @@ import java.io.*
 import java.nio.ByteBuffer
 import java.util.*
 
+
 class MainActivity : BaseActivity() {
 
     private lateinit var cameraDevice: CameraDevice
@@ -233,9 +234,9 @@ class MainActivity : BaseActivity() {
                 val characteristics = manager.getCameraCharacteristics(cameraDevice.id)
                 val isoRange = characteristics.get(CameraCharacteristics.SENSOR_INFO_SENSITIVITY_RANGE)
                 val exposureRange = characteristics.get(CameraCharacteristics.SENSOR_INFO_EXPOSURE_TIME_RANGE)
-
+                val manualFocusMinValue = characteristics.get(CameraCharacteristics.LENS_INFO_MINIMUM_FOCUS_DISTANCE)
                 supportFragmentManager.beginTransaction().run {
-                    CameraOptionDialog(isoRange, exposureRange).show(this, null)
+                    CameraOptionDialog(isoRange, exposureRange, manualFocusMinValue).show(this, null)
                 }
             } catch (e: CameraAccessException) {
                 e.printStackTrace()
@@ -307,11 +308,11 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    private fun setExposureValue(exposure: Int) {
+    private fun setExposureValue(exposure: Long) {
         try {
             cameraCaptureSessions.stopRepeating()
             previewBuilder.set(CaptureRequest.CONTROL_AE_MODE, CameraCharacteristics.CONTROL_AE_MODE_OFF)
-            previewBuilder.set(CaptureRequest.SENSOR_EXPOSURE_TIME, exposure.toLong());
+            previewBuilder.set(CaptureRequest.SENSOR_EXPOSURE_TIME, exposure)
             cameraCaptureSessions.setRepeatingRequest(previewBuilder.build(), null, null)
         } catch (e: CameraAccessException) {
             e.printStackTrace()
@@ -338,13 +339,6 @@ class MainActivity : BaseActivity() {
             val outputSurfaces: MutableList<Surface> = ArrayList(2)
             imageReader?.let { outputSurfaces.add(it.surface) }
             outputSurfaces.add(Surface(textureView.surfaceTexture))
-
-//            val captureBuilder = cameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE)
-//            imageReader?.let { captureBuilder.addTarget(it.surface) }
-//            captureBuilder.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO)
-//
-//            val rotation = windowManager.defaultDisplay.rotation
-//            captureBuilder[CaptureRequest.JPEG_ORIENTATION] = ORIENTATIONS[rotation]
 
             imageReader?.let { previewBuilder.addTarget(it.surface) }
             previewBuilder.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO)
@@ -416,7 +410,6 @@ class MainActivity : BaseActivity() {
                             try {
                                 session.capture(
                                         previewBuilder.build(),
-//                                captureBuilder.build(),
                                         captureListener,
                                         backgroundHandler
                                 )
@@ -548,7 +541,7 @@ class MainActivity : BaseActivity() {
                                 is OnClickCameraIsoEvent -> setIsoValue(it.iso)
 
                                 is OnClickCameraExposureEvent -> {
-                                    setExposureValue(it.exposure * 1000)
+                                    setExposureValue(it.exposure)
                                 }
 
                                 is OnClickCameraFocusEvent -> {

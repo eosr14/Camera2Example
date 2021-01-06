@@ -1,11 +1,13 @@
 package com.example.finiview.camera.ui.main
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.finiview.camera.common.base.BaseViewModel
 import com.example.finiview.camera.common.event.*
 
 
 enum class CameraFocusMode {
-    FIXED, INFINITY, MACRO, AUTO, CONTINUOUS_FOCUS_PICTURE, CONTINUOUS_FOCUS_VIDEO, EDOF
+    MANUAL, FIXED, INFINITY, MACRO, AUTO, CONTINUOUS_FOCUS_PICTURE, CONTINUOUS_FOCUS_VIDEO, EDOF
 }
 
 enum class CameraImageRatioMode {
@@ -22,20 +24,24 @@ enum class CameraAntiBandingMode {
 
 class CameraOptionViewModel : BaseViewModel() {
 
+    private val _cameraFocusMode = MutableLiveData<CameraFocusMode>()
+    val cameraFocusMode: LiveData<CameraFocusMode> = _cameraFocusMode
+
     fun onClickCameraIso(iso: Int) = RxEventBus.sendEvent(OnClickCameraIsoEvent(iso))
 
-    fun onClickCameraExposure(exposure: Int) = RxEventBus.sendEvent(OnClickCameraExposureEvent(exposure))
+    fun onClickCameraExposure(exposure: Long) = RxEventBus.sendEvent(OnClickCameraExposureEvent(exposure))
 
-    fun onClickCameraFocus(cameraFocusMode: CameraFocusMode) = RxEventBus.sendEvent(
-        OnClickCameraFocusEvent(cameraFocusMode)
-    )
+    fun onClickCameraFocus(cameraFocusMode: CameraFocusMode) {
+        _cameraFocusMode.value = cameraFocusMode
+        RxEventBus.sendEvent(OnClickCameraFocusEvent(cameraFocusMode))
+    }
 
     fun onClickCameraImageRatio(cameraImageRatio: CameraImageRatioMode) = RxEventBus.sendEvent(
-        OnClickCameraImageRatioEvent(cameraImageRatio)
+            OnClickCameraImageRatioEvent(cameraImageRatio)
     )
 
     fun onClickCameraFlash(cameraFlashMode: CameraFlashMode) = RxEventBus.sendEvent(
-        OnClickCameraFlashEvent(cameraFlashMode)
+            OnClickCameraFlashEvent(cameraFlashMode)
     )
 
     fun onClickCameraAntiBanding(cameraAntiBandingMode: CameraAntiBandingMode) = RxEventBus.sendEvent(OnClickCameraAntiBandingEvent(cameraAntiBandingMode))

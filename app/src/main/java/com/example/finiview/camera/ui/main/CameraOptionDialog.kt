@@ -16,7 +16,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class CameraOptionDialog(
         private val isoRange: Range<Int>?,
-        private val exposureRange: Range<Long>?
+        private val exposureRange: Range<Long>?,
+        private val manualFocusMinValue: Float?
 ) : BottomSheetDialogFragment() {
 
     private val viewModel: CameraOptionViewModel by lazy {
@@ -60,6 +61,33 @@ class CameraOptionDialog(
                     })
                 }
             }
+
+            exposureRange?.let { exposureRange ->
+                binding.tvOptionExposureTitle.text = String.format(context.getString(R.string.dialog_camera_option_exposure_title), exposureRange.lower, exposureRange.upper)
+
+                binding.sbOptionExposure.apply {
+                    setOnSeekBarChangeListener(object : OnProgressChanged() {
+                        override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                            val exposureValue = (progress * (exposureRange.upper - exposureRange.lower) / 100 + exposureRange.lower)
+                            binding.tvOptionExposure.text = String.format(context.getString(R.string.dialog_camera_option_exposure), exposureValue)
+                            viewModel.onClickCameraExposure(exposureValue)
+                        }
+                    })
+                }
+            }
+
+            manualFocusMinValue?.let { manualFocusMinValue ->
+                binding.sbOptionFocusManual.apply {
+                    setOnSeekBarChangeListener(object : OnProgressChanged() {
+                        override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                            val manualFocusValue = progress.toFloat() * manualFocusMinValue / 100
+                            binding.tvOptionFocusManual.text = String.format(context.getString(R.string.dialog_camera_option_focus_manual_value), manualFocusValue)
+                        }
+                    })
+                }
+            }
+
+
         }
 
         return binding.root
