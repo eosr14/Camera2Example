@@ -14,13 +14,9 @@
 
     <string name="dialog_camera_option_focus_title">포커스 설정</string>
     <string name="dialog_camera_option_focus_manual">수동 초점</string>
-    <string name="dialog_camera_option_focus_manual_value">수동 초점 : %d</string>
-    <string name="dialog_camera_option_focus_infinity">Infinity</string>
-    <string name="dialog_camera_option_focus_macro">Macro</string>
+    <string name="dialog_camera_option_focus_manual_value">수동 초점 : %f</string>
     <string name="dialog_camera_option_focus_auto">Auto</string>
-    <string name="dialog_camera_option_focus_continuous_focus_picture">Continuous Focus Picture</string>
-    <string name="dialog_camera_option_focus_continuous_focus_video">Continuous Focus Video</string>
-    <string name="dialog_camera_option_focus_edof">Edof</string>
+    <string name="dialog_camera_option_focus_infinity">Infinity</string>
 
     <string name="dialog_camera_option_image_ratio_title">Image Ratio</string>
     <string name="dialog_camera_option_image_ratio_1_1">1:1</string>
