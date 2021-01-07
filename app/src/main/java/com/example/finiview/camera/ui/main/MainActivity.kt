@@ -58,9 +58,9 @@ class MainActivity : BaseActivity() {
         }
 
         override fun onSurfaceTextureSizeChanged(
-                surface: SurfaceTexture,
-                width: Int,
-                height: Int
+            surface: SurfaceTexture,
+            width: Int,
+            height: Int
         ) {
         }
 
@@ -76,14 +76,14 @@ class MainActivity : BaseActivity() {
 
         // 상태바 숨기기
         window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
 
         // 화면 켜짐 유지
         window.setFlags(
-                WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
-                WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+            WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
+            WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
         )
 
         setContentView(R.layout.activity_main)
@@ -93,8 +93,8 @@ class MainActivity : BaseActivity() {
 
     private fun checkCameraPermission() {
         val cameraPermissionCheck = ContextCompat.checkSelfPermission(
-                this@MainActivity,
-                Manifest.permission.CAMERA
+            this@MainActivity,
+            Manifest.permission.CAMERA
         )
 
         isPermissionsGranted = cameraPermissionCheck == PackageManager.PERMISSION_GRANTED
@@ -102,8 +102,8 @@ class MainActivity : BaseActivity() {
         if (!isPermissionsGranted) {
             // 권한 없음
             requestPermissions(
-                    arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                    PERMISSION_CAMERA_REQUEST_CODE
+                arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                PERMISSION_CAMERA_REQUEST_CODE
             )
         }
     }
@@ -161,22 +161,22 @@ class MainActivity : BaseActivity() {
                 previewBuilder = cameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
                 previewBuilder.addTarget(surface)
                 cameraDevice.createCaptureSession(
-                        listOf(surface),
-                        object : CameraCaptureSession.StateCallback() {
-                            override fun onConfigured(cameraCaptureSession: CameraCaptureSession) {
-                                cameraCaptureSessions = cameraCaptureSession
-                                updatePreview()
-                            }
+                    listOf(surface),
+                    object : CameraCaptureSession.StateCallback() {
+                        override fun onConfigured(cameraCaptureSession: CameraCaptureSession) {
+                            cameraCaptureSessions = cameraCaptureSession
+                            updatePreview()
+                        }
 
-                            override fun onConfigureFailed(cameraCaptureSession: CameraCaptureSession) {
-                                Toast.makeText(
-                                        this@MainActivity,
-                                        "Configuration change",
-                                        Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        },
-                        null
+                        override fun onConfigureFailed(cameraCaptureSession: CameraCaptureSession) {
+                            Toast.makeText(
+                                this@MainActivity,
+                                "Configuration change",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    },
+                    null
                 )
             }
 
@@ -191,15 +191,15 @@ class MainActivity : BaseActivity() {
 
         iv_main_capture.setOnClickListener {
             if (ContextCompat.checkSelfPermission(
-                            this,
-                            Manifest.permission.READ_EXTERNAL_STORAGE
-                    ) != PackageManager.PERMISSION_GRANTED
+                    this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                ) != PackageManager.PERMISSION_GRANTED
             ) {
                 // request permission
                 ActivityCompat.requestPermissions(
-                        this,
-                        arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                        PERMISSION_WRITE_EXTERNAL_STORAGE_REQUEST_CODE
+                    this,
+                    arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    PERMISSION_WRITE_EXTERNAL_STORAGE_REQUEST_CODE
                 )
             } else {
                 takePicture()
@@ -215,9 +215,9 @@ class MainActivity : BaseActivity() {
 
             setOnSeekBarChangeListener(object : OnProgressChanged() {
                 override fun onProgressChanged(
-                        seekBar: SeekBar?,
-                        progress: Int,
-                        fromUser: Boolean
+                    seekBar: SeekBar?,
+                    progress: Int,
+                    fromUser: Boolean
                 ) {
                     updateZoom(progress + 1)
                 }
@@ -232,11 +232,17 @@ class MainActivity : BaseActivity() {
             val manager = getSystemService(Context.CAMERA_SERVICE) as CameraManager
             try {
                 val characteristics = manager.getCameraCharacteristics(cameraDevice.id)
-                val isoRange = characteristics.get(CameraCharacteristics.SENSOR_INFO_SENSITIVITY_RANGE)
-                val exposureRange = characteristics.get(CameraCharacteristics.SENSOR_INFO_EXPOSURE_TIME_RANGE)
-                val manualFocusMinValue = characteristics.get(CameraCharacteristics.LENS_INFO_MINIMUM_FOCUS_DISTANCE)
+                val isoRange =
+                    characteristics.get(CameraCharacteristics.SENSOR_INFO_SENSITIVITY_RANGE)
+                val exposureRange =
+                    characteristics.get(CameraCharacteristics.SENSOR_INFO_EXPOSURE_TIME_RANGE)
+                val manualFocusMinValue =
+                    characteristics.get(CameraCharacteristics.LENS_INFO_MINIMUM_FOCUS_DISTANCE)
                 supportFragmentManager.beginTransaction().run {
-                    CameraOptionDialog(isoRange, exposureRange, manualFocusMinValue).show(this, null)
+                    CameraOptionDialog(isoRange, exposureRange, manualFocusMinValue).show(
+                        this,
+                        null
+                    )
                 }
             } catch (e: CameraAccessException) {
                 e.printStackTrace()
@@ -253,9 +259,9 @@ class MainActivity : BaseActivity() {
                 if (::previewBuilder.isInitialized) {
                     setZoom(previewBuilder, progress.toFloat())
                     cameraCaptureSessions.setRepeatingRequest(
-                            previewBuilder.build(),
-                            null,
-                            backgroundHandler
+                        previewBuilder.build(),
+                        null,
+                        backgroundHandler
                     );
 
                     runOnUiThread {
@@ -288,8 +294,8 @@ class MainActivity : BaseActivity() {
         try {
             cameraCaptureSessions.stopRepeating()
             previewBuilder.set(
-                    CaptureRequest.FLASH_MODE,
-                    if (isFlashOn) CaptureRequest.FLASH_MODE_TORCH else null
+                CaptureRequest.FLASH_MODE,
+                if (isFlashOn) CaptureRequest.FLASH_MODE_TORCH else null
             )
             cameraCaptureSessions.setRepeatingRequest(previewBuilder.build(), null, null)
         } catch (e: CameraAccessException) {
@@ -300,7 +306,10 @@ class MainActivity : BaseActivity() {
     private fun setIsoValue(iso: Int) {
         try {
             cameraCaptureSessions.stopRepeating()
-            previewBuilder.set(CaptureRequest.CONTROL_AE_MODE, CameraCharacteristics.CONTROL_AE_MODE_OFF)
+            previewBuilder.set(
+                CaptureRequest.CONTROL_AE_MODE,
+                CameraCharacteristics.CONTROL_AE_MODE_OFF
+            )
             previewBuilder.set(CaptureRequest.SENSOR_SENSITIVITY, iso);
             cameraCaptureSessions.setRepeatingRequest(previewBuilder.build(), null, null)
         } catch (e: CameraAccessException) {
@@ -311,8 +320,35 @@ class MainActivity : BaseActivity() {
     private fun setExposureValue(exposure: Long) {
         try {
             cameraCaptureSessions.stopRepeating()
-            previewBuilder.set(CaptureRequest.CONTROL_AE_MODE, CameraCharacteristics.CONTROL_AE_MODE_OFF)
+            previewBuilder.set(
+                CaptureRequest.CONTROL_AE_MODE,
+                CameraCharacteristics.CONTROL_AE_MODE_OFF
+            )
             previewBuilder.set(CaptureRequest.SENSOR_EXPOSURE_TIME, exposure)
+            cameraCaptureSessions.setRepeatingRequest(previewBuilder.build(), null, null)
+        } catch (e: CameraAccessException) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun setFocusManualValue(focusDistance: Float) {
+        try {
+            cameraCaptureSessions.stopRepeating()
+            previewBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_OFF);
+            previewBuilder.set(CaptureRequest.LENS_FOCUS_DISTANCE, focusDistance)
+            cameraCaptureSessions.setRepeatingRequest(previewBuilder.build(), null, null)
+        } catch (e: CameraAccessException) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun setAutoFocusMode() {
+        try {
+            cameraCaptureSessions.stopRepeating()
+            previewBuilder.set(
+                CaptureRequest.CONTROL_AF_MODE,
+                CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE
+            )
             cameraCaptureSessions.setRepeatingRequest(previewBuilder.build(), null, null)
         } catch (e: CameraAccessException) {
             e.printStackTrace()
@@ -324,8 +360,8 @@ class MainActivity : BaseActivity() {
         try {
             val characteristics = manager.getCameraCharacteristics(cameraDevice.id)
             val jpegSizes: Array<Size>? =
-                    characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)
-                            ?.getOutputSizes(ImageFormat.JPEG)
+                characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)
+                    ?.getOutputSizes(ImageFormat.JPEG)
             var width = 640
             var height = 480
 
@@ -349,8 +385,8 @@ class MainActivity : BaseActivity() {
 
             val fileName = "${UUID.randomUUID()}.jpg"
             val dir = File(
-                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM),
-                    "/Camera2Example"
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM),
+                "/Camera2Example"
             )
 
             if (!dir.exists()) {
@@ -393,9 +429,9 @@ class MainActivity : BaseActivity() {
 
             val captureListener: CaptureCallback = object : CaptureCallback() {
                 override fun onCaptureCompleted(
-                        session: CameraCaptureSession,
-                        request: CaptureRequest,
-                        result: TotalCaptureResult
+                    session: CameraCaptureSession,
+                    request: CaptureRequest,
+                    result: TotalCaptureResult
                 ) {
                     super.onCaptureCompleted(session, request, result)
                     Toast.makeText(this@MainActivity, "Saved:$file", Toast.LENGTH_SHORT).show()
@@ -404,23 +440,23 @@ class MainActivity : BaseActivity() {
             }
 
             cameraDevice.createCaptureSession(
-                    outputSurfaces,
-                    object : CameraCaptureSession.StateCallback() {
-                        override fun onConfigured(session: CameraCaptureSession) {
-                            try {
-                                session.capture(
-                                        previewBuilder.build(),
-                                        captureListener,
-                                        backgroundHandler
-                                )
-                            } catch (e: CameraAccessException) {
-                                e.printStackTrace()
-                            }
+                outputSurfaces,
+                object : CameraCaptureSession.StateCallback() {
+                    override fun onConfigured(session: CameraCaptureSession) {
+                        try {
+                            session.capture(
+                                previewBuilder.build(),
+                                captureListener,
+                                backgroundHandler
+                            )
+                        } catch (e: CameraAccessException) {
+                            e.printStackTrace()
                         }
+                    }
 
-                        override fun onConfigureFailed(session: CameraCaptureSession) {}
-                    },
-                    backgroundHandler
+                    override fun onConfigureFailed(session: CameraCaptureSession) {}
+                },
+                backgroundHandler
             )
         } catch (e: CameraAccessException) {
             e.printStackTrace()
@@ -437,9 +473,9 @@ class MainActivity : BaseActivity() {
             }
 
             if (ActivityCompat.checkSelfPermission(
-                            this,
-                            Manifest.permission.CAMERA
-                    ) != PackageManager.PERMISSION_GRANTED
+                    this,
+                    Manifest.permission.CAMERA
+                ) != PackageManager.PERMISSION_GRANTED
             ) {
                 return
             }
@@ -474,9 +510,9 @@ class MainActivity : BaseActivity() {
         previewBuilder.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO)
         try {
             cameraCaptureSessions.setRepeatingRequest(
-                    previewBuilder.build(),
-                    null,
-                    backgroundHandler
+                previewBuilder.build(),
+                null,
+                backgroundHandler
             )
             updateZoom(1)
         } catch (e: CameraAccessException) {
@@ -490,38 +526,38 @@ class MainActivity : BaseActivity() {
     }
 
     override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<out String>,
-            grantResults: IntArray
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
     ) {
         when (requestCode) {
             PERMISSION_CAMERA_REQUEST_CODE -> {
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                     Toast.makeText(
-                            this@MainActivity,
-                            R.string.permission_camera_granted,
-                            Toast.LENGTH_SHORT
+                        this@MainActivity,
+                        R.string.permission_camera_granted,
+                        Toast.LENGTH_SHORT
                     ).show()
                 } else {
                     Toast.makeText(
-                            this,
-                            getString(R.string.permission_camera_define),
-                            Toast.LENGTH_SHORT
+                        this,
+                        getString(R.string.permission_camera_define),
+                        Toast.LENGTH_SHORT
                     ).show()
                 }
             }
             PERMISSION_WRITE_EXTERNAL_STORAGE_REQUEST_CODE -> {
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                     Toast.makeText(
-                            this@MainActivity,
-                            R.string.permission_write_external_storage_granted,
-                            Toast.LENGTH_SHORT
+                        this@MainActivity,
+                        R.string.permission_write_external_storage_granted,
+                        Toast.LENGTH_SHORT
                     ).show()
                 } else {
                     Toast.makeText(
-                            this@MainActivity,
-                            R.string.permission_write_external_storage_define,
-                            Toast.LENGTH_SHORT
+                        this@MainActivity,
+                        R.string.permission_write_external_storage_define,
+                        Toast.LENGTH_SHORT
                     ).show()
                 }
             }
@@ -534,33 +570,48 @@ class MainActivity : BaseActivity() {
 
     private fun eventObserve() {
         addDisposable(
-                RxEventBus.getSingleEventType(EventBusInterface::class.java)
-                        .compose(bindToLifecycle())
-                        .subscribe {
-                            when (it) {
-                                is OnClickCameraIsoEvent -> setIsoValue(it.iso)
+            RxEventBus.getSingleEventType(EventBusInterface::class.java)
+                .compose(bindToLifecycle())
+                .subscribe {
+                    when (it) {
+                        is OnClickCameraIsoEvent -> setIsoValue(it.iso)
 
-                                is OnClickCameraExposureEvent -> {
-                                    setExposureValue(it.exposure)
+                        is OnClickCameraExposureEvent -> {
+                            setExposureValue(it.exposure)
+                        }
+
+                        is OnClickCameraFocusEvent -> {
+                            when (it.cameraFocusMode) {
+                                CameraFocusMode.AUTO -> {
+                                    setAutoFocusMode()
                                 }
-
-                                is OnClickCameraFocusEvent -> {
+                                CameraFocusMode.INFINITY -> {
+                                    setFocusManualValue(0f)
                                 }
-
-                                is OnClickCameraImageRatioEvent -> {
-
-                                }
-
-                                is OnClickCameraFlashEvent -> {
-
-                                }
-
-                                is OnClickCameraAntiBandingEvent -> {
+                                else -> {
 
                                 }
-
                             }
-                        })
+                        }
+
+                        is OnClickCameraFocusManualEvent -> {
+                            setFocusManualValue(it.focusDistance)
+                        }
+
+                        is OnClickCameraImageRatioEvent -> {
+
+                        }
+
+                        is OnClickCameraFlashEvent -> {
+
+                        }
+
+                        is OnClickCameraAntiBandingEvent -> {
+
+                        }
+
+                    }
+                })
     }
 
     companion object {
