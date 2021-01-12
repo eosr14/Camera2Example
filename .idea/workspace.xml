@@ -7,6 +7,7 @@
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_CUSTOM_FILTER" value="eosr14" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="AutoImportSettings">
@@ -32,6 +33,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e5742b6-c245-4386-8fe7-58ea874e2be1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/finiview/camera/common/event/OnClickImageRatioEvent.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/finiview/camera/ui/main/ImageRatioAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_image_ratio.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -44,13 +48,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/finiview/camera/DeviceOrientation.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/finiview/camera/ViewExtensions.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/finiview/camera/common/event/OnClickCameraExposureEvent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/finiview/camera/common/event/OnClickCameraExposureEvent.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/finiview/camera/ui/main/CameraOptionDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/finiview/camera/ui/main/CameraOptionDialog.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/finiview/camera/ui/main/CameraOptionViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/finiview/camera/ui/main/CameraOptionViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/finiview/camera/ui/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/finiview/camera/ui/main/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/finiview/camera/ui/main/MainActivity_surfaceTest.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_camera_option.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_camera_option.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
@@ -92,24 +92,28 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="SerialNumber@R3CM80XF1WV" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-01-04T05:48:52.748398Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-01-11T00:55:26.366269Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/example/finiview/camera/ui/main" />
+    </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="com.example.finiview.camera.ui.main" />
     </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.example.finiview.camera.common.event" />
+      <recent name="com.example.finiview.camera.ui.main" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/app/src/main/java/com/example/finiview/camera/common" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
-      <recent name="$PROJECT_DIR$/app/src/main/java/com/example/finiview/camera/ui/main" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/java/com/example/finiview/camera/ui/main" />
     </key>
   </component>
@@ -213,42 +217,43 @@
       <screen x="1792" y="33" width="2560" height="1440" />
     </state>
     <state x="2806" y="515" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/1792.33.2560.1440/0.0.1792.1120@1792.33.2560.1440" timestamp="1609721016473" />
-    <state width="1868" height="229" key="GridCell.Tab.0.bottom" timestamp="1609921607125">
-      <screen x="629" y="-1080" width="1920" height="1080" />
+    <state width="2508" height="136" key="GridCell.Tab.0.bottom" timestamp="1610331100678">
+      <screen x="1792" y="33" width="2560" height="1440" />
     </state>
     <state width="1868" height="222" key="GridCell.Tab.0.bottom/-1291.-1055.1920.1055/629.-1080.1920.1080/0.25.1792.1095@629.-1080.1920.1080" timestamp="1609898688698" />
-    <state width="1868" height="229" key="GridCell.Tab.0.bottom/-1291.-1080.1920.1080/629.-1080.1920.1080/0.0.1792.1120@629.-1080.1920.1080" timestamp="1609921607125" />
-    <state width="2508" height="526" key="GridCell.Tab.0.bottom/1792.33.2560.1440/0.0.1792.1120@1792.33.2560.1440" timestamp="1609725508346" />
-    <state width="1868" height="229" key="GridCell.Tab.0.center" timestamp="1609921607123">
-      <screen x="629" y="-1080" width="1920" height="1080" />
+    <state width="1868" height="255" key="GridCell.Tab.0.bottom/-1291.-1080.1920.1080/629.-1080.1920.1080/0.0.1792.1120@629.-1080.1920.1080" timestamp="1610090223594" />
+    <state width="2508" height="136" key="GridCell.Tab.0.bottom/1792.33.2560.1440/0.0.1792.1120@1792.33.2560.1440" timestamp="1610331100678" />
+    <state width="2508" height="136" key="GridCell.Tab.0.center" timestamp="1610331100676">
+      <screen x="1792" y="33" width="2560" height="1440" />
     </state>
     <state width="1868" height="222" key="GridCell.Tab.0.center/-1291.-1055.1920.1055/629.-1080.1920.1080/0.25.1792.1095@629.-1080.1920.1080" timestamp="1609898688695" />
-    <state width="1868" height="229" key="GridCell.Tab.0.center/-1291.-1080.1920.1080/629.-1080.1920.1080/0.0.1792.1120@629.-1080.1920.1080" timestamp="1609921607123" />
-    <state width="2508" height="526" key="GridCell.Tab.0.center/1792.33.2560.1440/0.0.1792.1120@1792.33.2560.1440" timestamp="1609725508342" />
-    <state width="1868" height="229" key="GridCell.Tab.0.left" timestamp="1609921607121">
-      <screen x="629" y="-1080" width="1920" height="1080" />
+    <state width="1868" height="255" key="GridCell.Tab.0.center/-1291.-1080.1920.1080/629.-1080.1920.1080/0.0.1792.1120@629.-1080.1920.1080" timestamp="1610090223591" />
+    <state width="2508" height="136" key="GridCell.Tab.0.center/1792.33.2560.1440/0.0.1792.1120@1792.33.2560.1440" timestamp="1610331100676" />
+    <state width="2508" height="136" key="GridCell.Tab.0.left" timestamp="1610331100675">
+      <screen x="1792" y="33" width="2560" height="1440" />
     </state>
     <state width="1868" height="222" key="GridCell.Tab.0.left/-1291.-1055.1920.1055/629.-1080.1920.1080/0.25.1792.1095@629.-1080.1920.1080" timestamp="1609898688692" />
-    <state width="1868" height="229" key="GridCell.Tab.0.left/-1291.-1080.1920.1080/629.-1080.1920.1080/0.0.1792.1120@629.-1080.1920.1080" timestamp="1609921607121" />
-    <state width="2508" height="526" key="GridCell.Tab.0.left/1792.33.2560.1440/0.0.1792.1120@1792.33.2560.1440" timestamp="1609725508340" />
-    <state width="1868" height="229" key="GridCell.Tab.0.right" timestamp="1609921607124">
-      <screen x="629" y="-1080" width="1920" height="1080" />
+    <state width="1868" height="255" key="GridCell.Tab.0.left/-1291.-1080.1920.1080/629.-1080.1920.1080/0.0.1792.1120@629.-1080.1920.1080" timestamp="1610090223589" />
+    <state width="2508" height="136" key="GridCell.Tab.0.left/1792.33.2560.1440/0.0.1792.1120@1792.33.2560.1440" timestamp="1610331100675" />
+    <state width="2508" height="136" key="GridCell.Tab.0.right" timestamp="1610331100677">
+      <screen x="1792" y="33" width="2560" height="1440" />
     </state>
     <state width="1868" height="222" key="GridCell.Tab.0.right/-1291.-1055.1920.1055/629.-1080.1920.1080/0.25.1792.1095@629.-1080.1920.1080" timestamp="1609898688696" />
-    <state width="1868" height="229" key="GridCell.Tab.0.right/-1291.-1080.1920.1080/629.-1080.1920.1080/0.0.1792.1120@629.-1080.1920.1080" timestamp="1609921607124" />
-    <state width="2508" height="526" key="GridCell.Tab.0.right/1792.33.2560.1440/0.0.1792.1120@1792.33.2560.1440" timestamp="1609725508344" />
-    <state x="1314" y="-755" width="709" height="574" key="find.popup" timestamp="1609899267798">
-      <screen x="629" y="-1080" width="1920" height="1080" />
+    <state width="1868" height="255" key="GridCell.Tab.0.right/-1291.-1080.1920.1080/629.-1080.1920.1080/0.0.1792.1120@629.-1080.1920.1080" timestamp="1610090223593" />
+    <state width="2508" height="136" key="GridCell.Tab.0.right/1792.33.2560.1440/0.0.1792.1120@1792.33.2560.1440" timestamp="1610331100677" />
+    <state x="2705" y="466" width="734" height="574" key="find.popup" timestamp="1610414586675">
+      <screen x="1792" y="33" width="2560" height="1440" />
     </state>
-    <state x="1314" y="-755" width="709" height="574" key="find.popup/-1291.-1080.1920.1080/629.-1080.1920.1080/0.0.1792.1120@629.-1080.1920.1080" timestamp="1609899267798" />
-    <state x="2705" y="466" width="734" height="574" key="find.popup/1792.33.2560.1440/0.0.1792.1120@1792.33.2560.1440" timestamp="1609692313738" />
+    <state x="1314" y="-755" width="709" height="574" key="find.popup/-1291.-1080.1920.1080/629.-1080.1920.1080/0.0.1792.1120@629.-1080.1920.1080" timestamp="1609924260393" />
+    <state x="2705" y="466" width="734" height="574" key="find.popup/1792.33.2560.1440/0.0.1792.1120@1792.33.2560.1440" timestamp="1610414586675" />
     <state x="1170" y="-288" key="run.anything.popup" timestamp="1609898535411">
       <screen x="629" y="-1080" width="1920" height="1080" />
     </state>
     <state x="1170" y="-288" key="run.anything.popup/-1291.-1055.1920.1055/629.-1080.1920.1080/0.25.1792.1095@629.-1080.1920.1080" timestamp="1609898535411" />
-    <state x="1170" y="-1032" width="838" height="1032" key="search.everywhere.popup" timestamp="1609815457275">
-      <screen x="629" y="-1080" width="1920" height="1080" />
+    <state x="2513" y="97" width="1118" height="1376" key="search.everywhere.popup" timestamp="1610331572493">
+      <screen x="1792" y="33" width="2560" height="1440" />
     </state>
-    <state x="1170" y="-1032" width="838" height="1032" key="search.everywhere.popup/-1291.-1080.1920.1080/629.-1080.1920.1080/0.0.1792.1120@629.-1080.1920.1080" timestamp="1609815457275" />
+    <state x="1170" y="-1032" width="838" height="1032" key="search.everywhere.popup/-1291.-1080.1920.1080/629.-1080.1920.1080/0.0.1792.1120@629.-1080.1920.1080" timestamp="1610091873410" />
+    <state x="2513" y="97" width="1118" height="1376" key="search.everywhere.popup/1792.33.2560.1440/0.0.1792.1120@1792.33.2560.1440" timestamp="1610331572493" />
   </component>
 </project>

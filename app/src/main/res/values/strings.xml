@@ -15,13 +15,14 @@
     <string name="dialog_camera_option_focus_title">포커스 설정</string>
     <string name="dialog_camera_option_focus_manual">수동 초점</string>
     <string name="dialog_camera_option_focus_manual_value">수동 초점 : %f</string>
-    <string name="dialog_camera_option_focus_auto">Auto</string>
-    <string name="dialog_camera_option_focus_infinity">Infinity</string>
+    <string name="dialog_camera_option_focus_auto">자동 초점</string>
+    <string name="dialog_camera_option_focus_infinity">무한 초점</string>
 
     <string name="dialog_camera_option_image_ratio_title">Image Ratio</string>
     <string name="dialog_camera_option_image_ratio_1_1">1:1</string>
     <string name="dialog_camera_option_image_ratio_4_3">4:3</string>
     <string name="dialog_camera_option_image_ratio_16_9">16:9</string>
+    <string name="dialog_camera_option_image_ratio_item">%d x %d</string>
 
     <string name="dialog_camera_option_flash_title">플래시 설정(기획서 X)</string>
     <string name="dialog_camera_option_flash_off">Off</string>

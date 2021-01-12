@@ -4,8 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.finiview.camera.common.base.BaseViewModel
 import com.example.finiview.camera.common.event.*
-import com.example.finiview.camera.common.notifyObserver
-
 
 enum class CameraFocusMode {
     MANUAL, AUTO, INFINITY
@@ -25,13 +23,16 @@ enum class CameraAntiBandingMode {
 
 class CameraOptionViewModel : BaseViewModel() {
 
-    private val _isCameraFocusManual = MutableLiveData(false)
+    private val _isCameraFocusManual = MutableLiveData(true)
     val isCameraFocusManual: LiveData<Boolean> = _isCameraFocusManual
+
+    private val _cameraImageRatio = MutableLiveData(CameraImageRatioMode.RATIO_1_1)
+    val cameraImageRatio: LiveData<CameraImageRatioMode> = _cameraImageRatio
 
     fun onClickCameraIso(iso: Int) = RxEventBus.sendEvent(OnClickCameraIsoEvent(iso))
 
     fun onClickCameraExposure(exposure: Long) =
-        RxEventBus.sendEvent(OnClickCameraExposureEvent(exposure))
+            RxEventBus.sendEvent(OnClickCameraExposureEvent(exposure))
 
     fun onClickCameraFocus(cameraFocusMode: CameraFocusMode) {
         _isCameraFocusManual.value = when (cameraFocusMode) {
@@ -42,19 +43,19 @@ class CameraOptionViewModel : BaseViewModel() {
         RxEventBus.sendEvent(OnClickCameraFocusEvent(cameraFocusMode))
     }
 
-    fun onClickCameraFocusManual(focusDistance : Float) {
+    fun onClickCameraFocusManual(focusDistance: Float) {
         RxEventBus.sendEvent(OnClickCameraFocusManualEvent(focusDistance))
     }
 
-    fun onClickCameraImageRatio(cameraImageRatio: CameraImageRatioMode) = RxEventBus.sendEvent(
-        OnClickCameraImageRatioEvent(cameraImageRatio)
-    )
+    fun onClickCameraImageRatio(cameraImageRatio: CameraImageRatioMode) {
+        _cameraImageRatio.value = cameraImageRatio
+    }
 
     fun onClickCameraFlash(cameraFlashMode: CameraFlashMode) = RxEventBus.sendEvent(
-        OnClickCameraFlashEvent(cameraFlashMode)
+            OnClickCameraFlashEvent(cameraFlashMode)
     )
 
     fun onClickCameraAntiBanding(cameraAntiBandingMode: CameraAntiBandingMode) =
-        RxEventBus.sendEvent(OnClickCameraAntiBandingEvent(cameraAntiBandingMode))
+            RxEventBus.sendEvent(OnClickCameraAntiBandingEvent(cameraAntiBandingMode))
 
 }
